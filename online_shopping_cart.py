@@ -128,6 +128,9 @@ def prompt_int(input_text ):
 def main():
      customer_name = input("Enter customer's name:\n")
      current_date = input("Enter today's date:\n")
+     
+     print(f"Customer's name: {current_date}")
+     print(f"Today's date:  {current_date}")
      cart = ShoppingCart(customer_name, current_date)
 
      print_menu(cart)
