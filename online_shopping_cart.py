@@ -58,11 +58,12 @@ class ShoppingCart:
              print(f"Total: ${self.get_cost_of_cart()}")
 
         def print_descriptions(self):
-             print(f"{self.customer_name}' Shopping Cart - {self.current_date}")
+             print(f"{self.customer_name}'s Shopping Cart - {self.current_date}")
              print("Item Descriptions")
              for item in self.cart_items:
                   print(f"{item.item_name}: {item.item_description}")
-            
+
+
 def print_menu(cart):
      menu = ( "MENU\n"
              "a - Add item to cart\n"
@@ -86,20 +87,20 @@ def print_menu(cart):
                     item = ItemToPurchase()
                     item.item_name = input("Enter the item name:\n")
                     item.item_description = input("Enter the item's description:\n")
-                    item.item_price = int(input("Enter the item price:\n"))
-                    item.item_quantity = int(input("Enter the item quantity:\n"))
+                    item.item_price = prompt_int("Enter the item price:\n")
+                    item.item_quantity = prompt_int("Enter the item quantity:\n")
                     cart.add_item(item)
 
                case "r":
                     print("REMOVE ITEM FROM CART")
-                    item_name = input("Enter the item name:\n")
+                    item_name = input("Enter name of item to remove:\n")
                     cart.remove_item(item_name)
                
                case "c":
                      print("CHANGE ITEM QUANTITY")
                      item = ItemToPurchase()
                      item.item_name = input("Enter the item name:\n")
-                     item.item_quantity = int(input("Enter the item quantity:\n"))
+                     item.item_quantity = prompt_int("Enter the quantity:\n")
                      cart.modify_item(item)
                 
                case 'i':
@@ -115,6 +116,14 @@ def print_menu(cart):
                     break
                case _:
                     print("Invalid option")
+
+def prompt_int(input_text ):
+     while True:
+          number = input(input_text).strip()
+          if number.isdigit():
+               return int(number)
+          else:
+               print("Please enter a whole number")
 
 def main():
      customer_name = input("Enter customer's name:\n")
